@@ -43,8 +43,6 @@
 			</p>
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary">{{trans('general.go_to_page')}}</a>
 
-			<a href="{{($response->phone_number)}}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
-
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary px-3 active">
 				@if ($response->plans->where('status', '1')->first() && $response->free_subscription == 'no')
 					{{ __('general.price_per_month', ['price' => Helper::priceWithoutFormat($response->getPlan('monthly', 'price'))]) }}
@@ -56,7 +54,6 @@
 			</a>
 
             <!-- start of Phone Number-->
-				@if ($response->phone_number != '' && $response->verified_id == 'yes')
 				<a href="tel:{{ $response->phone_number }}"
 					class="btn btn-1 btn-sm btn-outline-success px-3 active mt-2"
 					onclick="trackCallEvent()">
@@ -71,7 +68,6 @@
                     });
                 }
             </script>
-						@endif
 				<!-- End of Phone Number-->
 	</div>
 </div><!-- End Card -->
