@@ -1209,6 +1209,7 @@ class AddFundsController extends Controller
  *
  * @return JsonResponse
  */
+
 public function sendMpesa()
 {
     // Get Payment Gateway
@@ -1261,12 +1262,22 @@ public function sendMpesa()
                 $this->settings->tax_on_wallet ? auth()->user()->taxesPayable() : null
             );
 
+            DB::table('deposits')
+                ->where('txn_id', $transactionReference)
+                ->update(['status' => 'pending']);
+
             return response()->json([
                 "success" => true,
                 "status" => 'pending',
                 'status_info' => __('general.pending_deposit'),
             ]);
         } else {
+            $transactionReference = $stkpush['MerchantRequestID'];
+
+            DB::table('deposits')
+                ->where('txn_id', $transactionReference)
+                ->update(['status' => 'cancelled']);
+
             return response()->json([
                 'success' => false,
                 'status' => 'cancelled',
@@ -1281,7 +1292,6 @@ public function sendMpesa()
         'status_info' => __('general.cancelled_deposit')
     ]);
 }
-
 
 public function STKCallback(Request $request)
 {
@@ -1328,7 +1338,6 @@ public function STKCallback(Request $request)
     return response()->json('success', 200); // return 200 to safaricom
 }
 
-
 private function checkTransactionStatus($transactionReference)
 {
     $status = $this->makeApiCallToCheckTransactionStatus($transactionReference);
@@ -1341,7 +1350,6 @@ private function checkTransactionStatus($transactionReference)
         return 'Failed';
     }
 }
-
 
 private function makeApiCallToCheckTransactionStatus($transactionReference)
 {
@@ -1376,8 +1384,6 @@ private function makeApiCallToCheckTransactionStatus($transactionReference)
     return 'Failed';
 }
 
-
 //<----- End of Mpesa
-
 
 }
