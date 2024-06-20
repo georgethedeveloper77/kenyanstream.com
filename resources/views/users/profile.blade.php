@@ -245,25 +245,6 @@
                 <i class="feather icon-send mr-1 mr-lg-0"></i> <span class="d-lg-none">{{__('general.message')}}</span>
               </button>
             @endif
-				
-				<!-- start of Phone Number-->				
-				@if ($user->phone_number != '' && $user->verified_id == 'yes')
-                                    <a href="tel:{{ $user->phone_number }}"
-									   class="btn btn-success  btn-profile mr-1"
-									   onclick="trackCallEvent()">
-										{{ __('general.call') }}
-				</a>
-				<script>
-                function trackCallEvent() {
-                    gtag('event', 'click', {
-                        'event_category': 'Call Button',
-                        'event_label': 'Phone Call Initiated',
-                        'value': '{{ $user->phone_number }}'
-                    });
-                }
-            </script>
-                                @endif
-				<!-- End of Phone Number-->
 
             @if ($user->verified_id == 'yes')
               <button class="btn btn-profile btn-google" title="{{__('general.share')}}" id="dropdownUserShare" role="button" data-toggle="modal" data-target=".share-modal">
