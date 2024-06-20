@@ -105,6 +105,7 @@ php artisan serve
 * Add Folder & file use App\Repositories\MpesaStkPush;
 * Add  $user->phone_number    = $this->request->phone_number; use profession parameter as reference
 * UpgradeController.php
+* listing-creators.blade.php
 * Functions.php
 * app.php
 * Add file config -> mpesa.php
@@ -113,9 +114,4 @@ php artisan serve
 * Add Blade file resources\views\admin\ -> mpesa-settings.blade.php
 * resources\views\users\ -> Payout_method.blade.php
 * resources\views\users\ -> wallet.blade.php
-
-
-
-
-                <i class="feather icon-send mr-1 mr-lg-0"></i> 
 

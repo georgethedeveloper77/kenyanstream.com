@@ -198,6 +198,7 @@ return array(
 	'save_payout_method' => 'Save Payout Method',
 	'image' => 'Image',
 	'video' => 'Video',
+	'is_reel' => 'Is Reel',
 	'video_desc' => 'Enter the video URL, we support Youtube and Vimeo.',
 	'upload_image' => 'Upload Image',
 	'withdrawals' => 'Withdrawals',
