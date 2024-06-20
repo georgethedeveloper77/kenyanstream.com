@@ -43,7 +43,7 @@
           @endforeach
 
           @include('includes.paginator-creators')
-          
+
         </div><!-- row -->
       </div><!-- col-md-9 -->
 

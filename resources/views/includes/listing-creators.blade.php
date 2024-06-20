@@ -53,12 +53,12 @@
 				@endif
 			</a>
 		
-            <!-- start of Phone Number-->				
+            <!-- start of Phone Number-->
 				@if ($response->phone_number != '' && $response->verified_id == 'yes')
-                                    <a href="tel:{{ $response->phone_number }}"
-									   class="btn btn-1 btn-sm btn-success"
-									   onclick="trackCallEvent()">
-										{{ __('general.call') }}
+				<a href="tel:{{ $response->phone_number }}"
+					class="btn btn-1 btn-sm btn-outline-primary"
+					onclick="trackCallEvent()">
+					{{ __('general.call') }}
 				</a>
 				<script>
                 function trackCallEvent() {
@@ -69,11 +69,7 @@
                     });
                 }
             </script>
-                                @endif
+						@endif
 				<!-- End of Phone Number-->
- 
-		
-		 
-
 	</div>
 </div><!-- End Card -->
