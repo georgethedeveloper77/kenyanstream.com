@@ -1271,18 +1271,6 @@ public function sendMpesa()
                 "status" => 'pending',
                 'status_info' => __('general.pending_deposit'),
             ]);
-        } else {
-            $transactionReference = $stkpush['MerchantRequestID'];
-
-            DB::table('deposits')
-                ->where('txn_id', $transactionReference)
-                ->update(['status' => 'cancelled']);
-
-            return response()->json([
-                'success' => false,
-                'status' => 'cancelled',
-                'status_info' => __('general.cancelled_deposit')
-            ]);
         }
     }
 
@@ -1292,6 +1280,7 @@ public function sendMpesa()
         'status_info' => __('general.cancelled_deposit')
     ]);
 }
+
 
 public function STKCallback(Request $request)
 {
@@ -1328,15 +1317,15 @@ public function STKCallback(Request $request)
                     'reload' => true
                 ]);
             } else {
+                // Delete the deposit record if transaction failed
                 DB::table('deposits')
-                    ->where('txn_id', $callback['Body']['stkCallback']['MerchantRequestID'])->update([
-                    'status' => 'cancelled',
-                ]);
+                    ->where('txn_id', $callback['Body']['stkCallback']['MerchantRequestID'])->delete();
             }
         }
     }
     return response()->json('success', 200); // return 200 to safaricom
 }
+
 
 private function checkTransactionStatus($transactionReference)
 {
