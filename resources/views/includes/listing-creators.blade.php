@@ -52,11 +52,11 @@
 					{{ __('general.free') }}
 				@endif
 			</a>
-		
+
             <!-- start of Phone Number-->
 				@if ($response->phone_number != '' && $response->verified_id == 'yes')
 				<a href="tel:{{ $response->phone_number }}"
-					class="btn btn-1 btn-sm btn-outline-primary"
+					class="btn btn-1 btn-sm btn-outline-success px-3 active mt-2"
 					onclick="trackCallEvent()">
 					{{ __('general.call') }}
 				</a>
