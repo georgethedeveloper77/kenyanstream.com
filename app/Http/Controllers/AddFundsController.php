@@ -1222,6 +1222,7 @@ public function sendMpesa()
 
     $amountFixed = number_format($this->request->amount + ($this->request->amount * $fee / 100) + $cents + $taxes, 2, '.', '');
 
+    // Generate token
     $authentication = Http::withBasicAuth(config('mpesa.consumer_key'), config('mpesa.consumer_secret'))
         ->get('https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials');
 
@@ -1281,10 +1282,12 @@ public function sendMpesa()
     ]);
 }
 
+
 public function STKCallback(Request $request)
 {
     $callback = $request->all();
     logger($callback);
+
     if (isset($callback['Body']['stkCallback']['MerchantRequestID'])) {
         $transaction = DB::table('deposits')
                             ->where('txn_id', $callback['Body']['stkCallback']['MerchantRequestID'])
@@ -1325,6 +1328,7 @@ public function STKCallback(Request $request)
     return response()->json('success', 200); // return 200 to safaricom
 }
 
+
 private function checkTransactionStatus($transactionReference)
 {
     $status = $this->makeApiCallToCheckTransactionStatus($transactionReference);
@@ -1337,6 +1341,7 @@ private function checkTransactionStatus($transactionReference)
         return 'Failed';
     }
 }
+
 
 private function makeApiCallToCheckTransactionStatus($transactionReference)
 {
@@ -1357,12 +1362,20 @@ private function makeApiCallToCheckTransactionStatus($transactionReference)
         ]);
 
         if ($response->successful()) {
-            return $response;
+            $result = $response->json();
+            if (isset($result['ResultCode']) && $result['ResultCode'] == 0) {
+                return 'Success';
+            } elseif (isset($result['ResultCode']) && $result['ResultCode'] == 1) {
+                return 'Pending';
+            } else {
+                return 'Failed';
+            }
         }
-        return false;
+        return 'Failed';
     }
-    return false;
+    return 'Failed';
 }
+
 
 //<----- End of Mpesa
 
