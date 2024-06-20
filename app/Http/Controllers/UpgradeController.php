@@ -809,7 +809,7 @@ class UpgradeController extends Controller
 					$table->unsignedInteger('amount');
 					$table->string('payment_gateway', 100);
 					$table->timestamp('date');
-					$table->enum('status', ['active', 'pending'])->default('active');
+					$table->enum('status', ['active', 'pending', 'cancelled'])->default('active');
 					$table->string('screenshot_transfer', 100);
 				});
 			} // <<< --- Create table Deposits
@@ -2320,7 +2320,7 @@ class UpgradeController extends Controller
 					$table->string('file_name');
 					$table->string('file_size');
 					$table->string('token')->index();
-					$table->enum('status', ['active', 'pending'])->default('active');
+					$table->enum('status', ['active', 'pending','cancelled'])->default('active');
 					$table->timestamps();
 				});
 			} // <<--- End Create Table Media
@@ -2404,7 +2404,7 @@ class UpgradeController extends Controller
 					$table->string('file_name');
 					$table->string('file_size');
 					$table->string('token')->index();
-					$table->enum('status', ['active', 'pending'])->default('active');
+					$table->enum('status', ['active', 'pending','cancelled'])->default('active');
 					$table->timestamps();
 				});
 			} // <<--- End Create Table Media Messages
