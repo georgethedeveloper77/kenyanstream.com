@@ -43,6 +43,8 @@
 			</p>
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary">{{trans('general.go_to_page')}}</a>
 
+			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary">{{trans('general.go_to_page')}}</a>
+
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary px-3 active">
 				@if ($response->plans->where('status', '1')->first() && $response->free_subscription == 'no')
 					{{ __('general.price_per_month', ['price' => Helper::priceWithoutFormat($response->getPlan('monthly', 'price'))]) }}
