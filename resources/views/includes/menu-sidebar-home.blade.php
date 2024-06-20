@@ -32,7 +32,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="{{ url('explore') }}" {{-- @if (request()->is('explore')) --}} class="active disabled" {{-- @endif --}}>
+		<a href="{{ url('explore') }}" @if (request()->is('explore')) class="active disabled" @endif>
 			<i class="bi bi-compass"></i>
 			<span class="ml-2">{{ trans('general.explore') }}</span>
 		</a>

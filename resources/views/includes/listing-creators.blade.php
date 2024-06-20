@@ -54,11 +54,14 @@
 			</a>
 
             <!-- start of Phone Number-->
-				<a href="tel:{{ $response->phone_number }}"
-					class="btn btn-1 btn-sm btn-outline-success px-3 mt-2"
-					onclick="trackCallEvent()">
-					{{ __('general.call') }}
-				</a>
+				@if(isset($response->phone_number))
+    <a href="tel:{{ $response->phone_number }}"
+			class="btn btn-1 btn-sm btn-outline-success px-3 mt-2"
+			onclick="trackCallEvent()">
+			{{ __('general.call') }}
+    </a>
+		@endif
+
 				<script>
                 function trackCallEvent() {
                     gtag('event', 'click', {
