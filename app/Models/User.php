@@ -350,20 +350,29 @@ class User extends Authenticatable implements HasLocalePreference
   }
 
   public function checkSubscription($creator)
-  {
+{
+    // Check if $creator is null
+    if (is_null($creator)) {
+        return null; // or handle the error as needed
+    }
+
+    // Proceed if $creator is not null
     return $this->userSubscriptions()
-      ->whereIn('stripe_price', $creator->plans->pluck('name'))
-      ->where('ends_at', '>=', now())
+        ->whereIn('stripe_price', $creator->plans->pluck('name'))
+        ->where('ends_at', '>=', now())
+        ->orWhere(function($query) use ($creator) {
+            $query->where('stripe_status', 'active')
+                  ->whereIn('stripe_price', $creator->plans->pluck('name'))
+                  ->whereUserId($this->id);
+        })
+        ->orWhere(function($query) use ($creator) {
+            $query->where('free', 'yes')
+                  ->where('stripe_price', $creator->plans)
+                  ->whereUserId($this->id);
+        })
+        ->first();
+}
 
-      ->orWhere('stripe_status', 'active')
-      ->whereIn('stripe_price', $creator->plans->pluck('name'))
-      ->whereUserId($this->id)
-
-      ->orWhere('free', 'yes')
-      ->where('stripe_price', $creator->plan)
-      ->whereUserId($this->id)
-      ->first();
-  }
 
   public function checkPayPerViewMsg($msgId)
   {
