@@ -43,7 +43,7 @@
 			</p>
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary">{{trans('general.go_to_page')}}</a>
 
-			<a href="{{url($response->phone_number)}}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
+			<a href="{{($response->phone_number)}}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
 
 			<a href="{{url($response->username)}}" class="btn btn-1 btn-sm btn-outline-primary px-3 active">
 				@if ($response->plans->where('status', '1')->first() && $response->free_subscription == 'no')
