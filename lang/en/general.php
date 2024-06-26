@@ -199,7 +199,7 @@ return array(
 	'image' => 'Image',
 	'video' => 'Video',
 	'is_reel' => 'Is Reel',
-    'upload_reel' => 'Upload a Reel',
+    'upload_reel' => 'Upload a Reel(Coming Soon)',
 	'video_desc' => 'Enter the video URL, we support Youtube and Vimeo.',
 	'upload_image' => 'Upload Image',
 	'withdrawals' => 'Withdrawals',
