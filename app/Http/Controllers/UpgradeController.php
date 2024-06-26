@@ -8490,7 +8490,14 @@ Route::post('comment/like','CommentsController@like')->middleware('auth');",
 					Schema::table('media', function (Blueprint $table) {
 					  $table->string('job_id', 200)->index('job_id')->nullable();
 					});
-				  }
+                }
+
+                  // Add the `is_reel` column
+                  if (!Schema::hasColumn('media', 'is_reel')) {
+                    Schema::table('media', function (Blueprint $table) {
+                        $table->boolean('is_reel')->default(false)->after('status');
+                    });
+                }
 			  
 				  if (!Schema::hasColumn('media_messages', 'job_id')) {
 					Schema::table('media_messages', function (Blueprint $table) {

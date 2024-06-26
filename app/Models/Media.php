@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-  protected $fillable = [
+protected $fillable = [
     'updates_id',
     'user_id',
     'type',
@@ -23,14 +23,15 @@ class Media extends Model
     'img_type',
     'token',
     'status',
+    'is_reel',
     'created_at'
-  ];
+];
 
-  public function user() {
+public function user() {
         return $this->belongsTo('App\Models\User')->first();
     }
 
-  public function updates() {
+public function updates() {
         return $this->belongsTo('App\Models\Updates');
     }
 
