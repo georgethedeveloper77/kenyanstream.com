@@ -36,6 +36,10 @@
           </div>
       </div>
   </li>
+
+  @if (!empty($user->phone_number))
+    <a href="tel:{{ $user->phone_number }}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
+  @endif
 	</div><!-- cover -->
   </a>
   @endforeach

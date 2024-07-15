@@ -55,6 +55,12 @@
 
             @if (!empty($response->phone_number))
             <a href="tel:{{ $response->phone_number }}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
+            @elseif (isset($users) && $users->isNotEmpty())
+            @foreach ($users as $user)
+            @if (!empty($user->phone_number))
+            <a href="tel:{{ $user->phone_number }}" class="btn btn-1 btn-sm btn-outline-success">{{trans('general.call')}}</a>
+            @endif
+            @endforeach
             @endif
 
 
