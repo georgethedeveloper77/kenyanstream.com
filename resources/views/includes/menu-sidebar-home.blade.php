@@ -25,6 +25,12 @@
 				<span class="ml-2">{{ trans('general.purchased') }}</span>
 			</a>
 		</li>
+        <li>
+		<a href="https://shorts.kenyanstream.com/shorts">
+			<i class="feather icon-grid"></i>
+			<span class="ml-2">{{ trans('general.shorts') }}</span>
+		</a>
+	</li>
 	<li>
 		<a href="{{ url('messages') }}">
 			<i class="feather icon-send"></i>

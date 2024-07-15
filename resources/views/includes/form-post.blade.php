@@ -83,6 +83,18 @@
               <i class="feather icon-image f-size-20 align-bottom"></i>
             </button>
 
+            {{-- Shorts button --}}
+            @if(auth()->check())
+            <button type="button"
+            class="btn btn-post btnTooltipForm e-none @if (auth()->user()->dark_mode == 'off') text-primary @else text-white @endif rounded-pill"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{__('general.upload_shorts')}}"
+            onclick='window.location.href="https://shorts.kenyanstream.com/upload-video?type=shorts"'>
+            <i class="feather icon-grid f-size-20 align-bottom"></i>
+        </button>
+        @endif
+
             @if ($settings->allow_zip_files)
             <input type="file" name="zip" id="fileZip" accept="application/x-zip-compressed" class="visibility-hidden">
 

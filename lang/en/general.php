@@ -199,7 +199,8 @@ return array(
 	'save_payout_method' => 'Save Payout Method',
 	'image' => 'Image',
 	'video' => 'Video',
-  'upload_reel' => 'Upload a Reel(Coming Soon)',
+    'shorts' => 'Shorts',
+  'upload_shorts' => 'Upload a Short | Tiktok | Reel ',
 	'video_desc' => 'Enter the video URL, we support Youtube and Vimeo.',
 	'upload_image' => 'Upload Image',
 	'withdrawals' => 'Withdrawals',
@@ -266,7 +267,6 @@ return array(
 	'photos' => 'Photos',
 	'videos' => 'Videos',
 	'upload_media' => 'Upload Media',
-	'upload_reel' => 'Upload Reel',
 	'replace_media' => 'Replace Media',
 	'image_cover' => 'Image Cover',
 	'get_access_month' => 'Get access :price/mo', // Not replace :price
@@ -683,7 +683,6 @@ return array(
 	'point_equivalent_money' => '1 point equals',
 	'token_equivalent_money' => '1 token equals',
 	'media_type_upload' => 'Photo, Video or Audio MP3',
-	'reel_type_upload' =>'Reel Video | MP4',
 	'years' => 'years',
 	'price_per_month' => ':price/mo', // Not replace :price
 	'maximum_files_post' => 'Maximum files in a Post',

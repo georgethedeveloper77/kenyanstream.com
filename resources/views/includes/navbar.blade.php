@@ -70,6 +70,11 @@
                                 <a class="nav-link" href="{{url('creators')}}">{{trans('general.all_escorts')}}</a>
                             </li>
 
+														{{-- Shorts --}}
+														<li class="nav-item">
+                                <a class="nav-link" href="https://shorts.kenyanstream.com/shorts">{{trans('general.shorts')}}</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link"
                                    href="{{url('creators/more-active')}}">{{trans('general.more_active_creators')}}</a>
@@ -277,7 +282,16 @@
 					</li>
 					@endif
 
-					@if ($settings->shop)
+					{{-- Shorts --}}
+					<li class="nav-item dropdown d-lg-block d-none">
+						<a class="nav-link px-2" href="https://shorts.kenyanstream.com/shorts" title="{{__('general.shorts')}}">
+							<i class="feather icon-grid icon-navbar"></i>
+							<span class="d-lg-none align-middle ml-1">{{__('general.shorts')}}</span>
+						</a>
+					</li>
+
+
+				@if ($settings->shop)
 					<li class="nav-item dropdown d-lg-block d-none">
 						<a class="nav-link px-2" href="{{url('shop')}}" title="{{__('general.shop')}}">
 							<i class="feather icon-shopping-bag icon-navbar"></i>
@@ -285,6 +299,7 @@
 						</a>
 					</li>
 				@endif
+
 
 				<li class="nav-item dropdown d-lg-block d-none">
 					<a href="{{url('messages')}}" class="nav-link px-2" title="{{ __('general.messages') }}">
