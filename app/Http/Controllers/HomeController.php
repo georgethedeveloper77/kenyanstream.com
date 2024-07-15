@@ -340,7 +340,8 @@ class HomeController extends Controller
             'users.hide_name',
             'users.verified_id',
             'users.free_subscription',
-            'users.featured'
+            'users.featured',
+            'users.phone_number'
           )
           ->with([
             'plans', 'media' => fn ($q) =>
@@ -483,7 +484,8 @@ class HomeController extends Controller
           'users.hide_name',
           'users.verified_id',
           'users.free_subscription',
-          'users.featured'
+          'users.featured',
+          'users.phone_number'
         )
         ->with([
           'media' => fn ($q) =>
